@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -16,103 +15,138 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Covid-19 World Data</a>
+    <a class="navbar-brand" href="#">Covid-19 World Data Tracker</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="index">Home
-          </a>
+          <a class="nav-link active" href="all">All</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Continents</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/continent/North America">North America</a>
+            <a class="dropdown-item" href="/continent/Asia">Asia</a>
+            <a class="dropdown-item" href="/continent/South America">South America</a>
+            <a class="dropdown-item" href="/continent/Europe">Europe</a>
+            <a class="dropdown-item" href="/continent/Africa">Africa</a>
+            <a class="dropdown-item" href="/continent/Australia-Oceania">Australia-Oceania</a>
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="all">All</a>
-          <span class="visually-hidden">(current)</span>
+          <a class="nav-link" href="countries">Countries</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="continent">Continent</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="country">Country</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="state">State</a>
+          <a class="nav-link" href="states">States</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<table class="table">
-	<thead>
-		<c:forEach items="${allData}" var="item">
-		    <tr>
-		      <th scope="col">Updated</th><th scope="col">${item.updated}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Cases</th><th scope="col">${item.cases}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Today Cases</th><th scope="col">${item.todayCases}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Deaths</th><th scope="col">${item.deaths}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Today Deaths</th><th scope="col">${item.todayDeaths}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Recovered</th><th scope="col">${item.recovered}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Today Recovered</th><th scope="col">${item.todayRecovered}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Active</th><th scope="col">${item.active}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Critical</th><th scope="col">${item.critical}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Cases Per One Million</th><th scope="col">${item.casesPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Deaths Per One Million</th><th scope="col">${item.deathsPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Tests</th><th scope="col">${item.tests}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Tests Per One Million</th><th scope="col">${item.testsPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Population</th><th scope="col">${item.population}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">One Case Per People</th><th scope="col">${item.oneCasePerPeople}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">One Death Per People</th><th scope="col">${item.oneDeathPerPeople}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">One Test Per People</th><th scope="col">${item.oneTestPerPeople}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Active Per One Million</th><th scope="col">${item.activePerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Recovered Per One Million</th><th scope="col">${item.recoveredPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Ctitical Per One Million</th><th scope="col">${item.criticalPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Affected Countries</th><th scope="col">${item.affectedCountries}</th>
-		    </tr>
-		</c:forEach>
-	</thead>
-</table>
+<div style="width: 100%; max-width: 960px; margin: 0 auto; margin-top: 25px;">
+
+<c:forEach items="${allData}" var="item">
+    <div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px;">
+  <div class="card-header" style="text-align: center;">TODAY</div>
+  <div class="card-body">
+    <p class="card-text">
+		<table class="table">
+			<thead>	
+				    <tr>
+				      <th scope="col">Cases</th><th scope="col">${item.todayCases}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Deaths</th><th scope="col">${item.todayDeaths}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Recovered</th><th scope="col">${item.todayRecovered}</th>
+				    </tr>
+			</thead>
+		</table>
+  </div>
+</div>
+
+<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px;">
+  <div class="card-header" style="text-align: center;">TOTAL</div>
+  <div class="card-body">
+    <p class="card-text">
+		<table class="table">
+			<thead>	
+				    <tr>
+				      <th scope="col">Cases</th><th scope="col">${item.cases}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Deaths</th><th scope="col">${item.deaths}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Recovered</th><th scope="col">${item.recovered}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Active</th><th scope="col">${item.active}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Critical</th><th scope="col">${item.critical}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Tests</th><th scope="col">${item.tests}</th>
+				    </tr>
+			</thead>
+		</table>
+  </div>
+</div>
+
+<div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px;">
+  <div class="card-header" style="text-align: center;">PER ONE MILLION</div>
+  <div class="card-body">
+    <p class="card-text">
+		<table class="table">
+			<thead>	
+				    <tr>
+				      <th scope="col">Cases</th><th scope="col">${item.casesPerOneMillion}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Deaths</th><th scope="col">${item.deathsPerOneMillion}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Recovered</th><th scope="col">${item.recoveredPerOneMillion}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Active</th><th scope="col">${item.activePerOneMillion}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Ctitical</th><th scope="col">${item.criticalPerOneMillion}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Tests</th><th scope="col">${item.testsPerOneMillion}</th>
+				    </tr>
+			</thead>
+		</table>
+  </div>
+</div>
+
+<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px;">
+  <div class="card-header" style="text-align: center;">INFO</div>
+  <div class="card-body">
+    <p class="card-text">
+		<table class="table">
+			<thead>	
+				    <tr>
+				      <th scope="col">Population</th><th scope="col">${item.population}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">Affected Countries</th><th scope="col">${item.affectedCountries}</th>
+				    </tr>
+			</thead>
+		</table>
+  </div>
+</div>
+</c:forEach>
+
+</div>
+
 
 </body>
 </html>

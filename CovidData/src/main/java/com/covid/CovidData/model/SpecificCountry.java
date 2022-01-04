@@ -30,7 +30,6 @@ public class SpecificCountry {
 	private float activePerOneMillion;
 	private float recoveredPerOneMillion;
 	private float criticalPerOneMillion;
-	private int affectedCountries;
 	
 	public long getUpdated() {
 		return updated;
@@ -170,11 +169,5 @@ public class SpecificCountry {
 	public void setCriticalPerOneMillion(float criticalPerOneMillion) {
 		this.criticalPerOneMillion = criticalPerOneMillion;
 	}
-	public int getAffectedCountries() {
-		return affectedCountries;
-	}
-	public void setAffectedCountries(int affectedCountries) {
-		this.affectedCountries = affectedCountries;
-	}
-	
+		
 }

@@ -12,6 +12,7 @@ import com.covid.CovidData.model.AllData;
 import com.covid.CovidData.model.Continent;
 import com.covid.CovidData.model.SpecificCountry;
 import com.covid.CovidData.model.SpecificState;
+import com.covid.CovidData.model.States;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,18 +24,19 @@ public class MainController {
 	
 	//		https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_all
 	
-	private static final String INDEX_PAGE = "index";
+	//		https://disease.sh/docs/#/
+
 	private static final String ALLDATA_PAGE = "all";
-	private static final String COUNTRY_PAGE = "country";
+
 	private static final String CONTINENT_PAGE = "continent";
+	
+	private static final String COUNTRIES_PAGE = "countries";
+	private static final String COUNTRY_PAGE = "country";
+
+	private static final String STATES_PAGE = "states";
 	private static final String STATE_PAGE = "state";
 	
-	@GetMapping("/covid-19/")
-	public String index() {
-		return INDEX_PAGE;
-	}
-	
-	@GetMapping("/covid-19/all")
+	@GetMapping("/all")
 	public String all(final Model model) {
 		try {
 			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/all");
@@ -47,20 +49,20 @@ public class MainController {
 		return ALLDATA_PAGE;
 	}
 	
-	@GetMapping("/covid-19/continents")
-	public String continents(final Model model) {
+	@GetMapping("/states")
+	public String states(final Model model) {
 		try {
-			URL CONTINENTS_URL = new URL("https://disease.sh/v3/covid-19/all");
+			URL STATES_URL = new URL("https://disease.sh/v3/covid-19/states");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<AllData> allDataList = mapper.readValue(CONTINENTS_URL, new TypeReference<List<AllData>>(){});
-			model.addAttribute("allData", allDataList);
+			List<States> statesList = mapper.readValue(STATES_URL, new TypeReference<List<States>>(){});
+			model.addAttribute("states", statesList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ALLDATA_PAGE;
+		return STATES_PAGE;
 	}
 	
-	@GetMapping("/covid-19/state/{state}")
+	@GetMapping("/state/{state}")
 	public String specificState(@PathVariable String state, Model model) {
 		try {
 			URL STATE_URL = new URL("https://disease.sh/v3/covid-19/states/" + state);
@@ -73,7 +75,20 @@ public class MainController {
 		return STATE_PAGE;
 	}
 	
-	@GetMapping("/covid-19/country/{country}")
+	@GetMapping("/countries")
+	public String countries(final Model model) {
+		try {
+			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/countries");
+			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+			List<SpecificCountry> countryList = mapper.readValue(COUNTRIES_URL, new TypeReference<List<SpecificCountry>>(){});
+			model.addAttribute("country", countryList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return COUNTRIES_PAGE;
+	}
+	
+	@GetMapping("/country/{country}")
 	public String specificCountry(@PathVariable String country, final Model model) {
 		try {
 			URL COUNTRY_URL = new URL("https://disease.sh/v3/covid-19/countries/"+ country +"?strict=true");
@@ -86,11 +101,10 @@ public class MainController {
 		return COUNTRY_PAGE;
 	}
 	
-	
-	@GetMapping("/covid-19/continent/{continent}")
+	@GetMapping("/continent/{continent}")
 	public String specificContinent(@PathVariable String continent, final Model model) {
 		try {
-			URL CONTINENT_URL = new URL("https://disease.sh/v3/covid-19/continents/"+ continent +"?strict=true");
+			URL CONTINENT_URL = new URL("https://disease.sh/v3/covid-19/continents/" + continent + "?strict=true");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<Continent> continentList = mapper.readValue(CONTINENT_URL, new TypeReference<List<Continent>>(){});
 			model.addAttribute("continent", continentList);

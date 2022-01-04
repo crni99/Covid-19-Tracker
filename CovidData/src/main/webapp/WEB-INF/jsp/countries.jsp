@@ -2,17 +2,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head>
+<html>
+<head>
+<head>
 		<meta charset="UTF-8"/>
-		<title>State</title>
+		<title>Countries</title>
 		<link href="https://bootswatch.com/5/superhero/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" 
 			integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
 			integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	</head>
-<body>
+</head>
+<body">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Covid-19 World Data Tracker</a>
@@ -27,7 +29,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Continents</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/continent/North America">North America</a>
+            <a class="dropdown-item" href="/continent/North America" target="_blank">North America</a>
             <a class="dropdown-item" href="/continent/Asia">Asia</a>
             <a class="dropdown-item" href="/continent/South America">South America</a>
             <a class="dropdown-item" href="/continent/Europe">Europe</a>
@@ -36,68 +38,49 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="countries">Countries</a>
+          <a class="nav-link active" href="countries">Countries</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="states">States</a>
+        <input type="text" id="Search" onkeyup="myFunction()" class="form-control" placeholder="Search all fields">
+				<script>
+					function myFunction() {
+  					  var input = document.getElementById("Search");
+					  var filter = input.value.toLowerCase();
+					  var nodes = document.getElementsByClassName('card');
+					
+					  for (i = 0; i < nodes.length; i++) {
+					    if (nodes[i].innerText.toLowerCase().includes(filter)) {
+					      nodes[i].style.display = "inline-block";
+					    } else {
+					      nodes[i].style.display = "none";
+					    }
+					  }
+					}
+				</script>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="states">States</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div style="width: 100%; max-width: 960px; margin: 0 auto;">
+<br>
+<div style="max-width: 1200px; margin: 0 auto;">
 
-<c:forEach items="${state}" var="item">
-<div class="card text-white bg-dark border-light mb-3" id="card" style="margin: 10px; max-width: 60rem; width: 960px;">
-  <div class="card-header" style="text-align: center;">${item.state}</div>
+<c:forEach items="${country}" var="item">
+	<c:forEach items="${item.countryInfo}" var="entry">
+    <div class="card text-white bg-dark border-light mb-3" id="card" style="margin: 10px; max-width: 25rem; display:inline-block; width: 370px;">
+  <div class="card-header"><img SRC="${entry.flag}" width="55" height="35" style="margin-right: 10px;"> ${entry.iso3} </div>
   <div class="card-body">
-    <p class="card-text">
-	  <table class="table">
-		 <thead>
-		 	<tr>
-		      <th scope="col">Today Cases</th><th scope="col">${item.todayCases}</th>
-		    </tr>
-		 	<tr>
-		      <th scope="col">Today Deaths</th><th scope="col">${item.todayDeaths}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Today Recovered</th><th scope="col">${item.todayRecovered}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Cases</th><th scope="col">${item.cases}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Deaths</th><th scope="col">${item.deaths}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Recovered</th><th scope="col">${item.recovered}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Active</th><th scope="col">${item.active}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Tests</th><th scope="col">${item.tests}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Cases Per One Million</th><th scope="col">${item.casesPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Deaths Per One Million</th><th scope="col">${item.deathsPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Tests Per One Million</th><th scope="col">${item.testsPerOneMillion}</th>
-		    </tr>
-		    <tr>
-		      <th scope="col">Population</th><th scope="col">${item.population}</th>
-		    </tr>
-		</thead>
-	</table>
+    <h4 class="card-title"> <a href="country/${item.country}" target="_blank" style="color: orange;"> <strong>${item.country}</strong></a></h4>
+    <p class="card-text">Today cases: ${item.todayCases} <br> Today recovered : ${item.todayRecovered} <br> Today deaths: ${item.todayDeaths}</p>
   </div>
-</div>	
-	
-</c:forEach>
 </div>
-		
+	</c:forEach>
+</c:forEach>
+
+</div>
 </body>
 </html>
