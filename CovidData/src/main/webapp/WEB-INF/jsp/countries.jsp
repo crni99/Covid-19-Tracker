@@ -75,7 +75,7 @@
   <div class="card-header"><img SRC="${entry.flag}" width="55" height="35" style="margin-right: 10px;"> ${entry.iso3} </div>
   <div class="card-body">
     <h4 class="card-title"> <a href="country/${item.country}" target="_blank" style="color: orange;"> <strong>${item.country}</strong></a></h4>
-    <p class="card-text">Today cases: ${item.todayCases} <br> Today recovered : ${item.todayRecovered} <br> Today deaths: ${item.todayDeaths}</p>
+    <p class="card-text">Today cases: ${item.todayCases} <br> Today deaths: ${item.todayDeaths} <br> Today recovered : ${item.todayRecovered} </p>
   </div>
 </div>
 	</c:forEach>

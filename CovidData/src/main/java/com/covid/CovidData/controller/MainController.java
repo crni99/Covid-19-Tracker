@@ -1,6 +1,8 @@
 package com.covid.CovidData.controller;
 
+import java.io.InputStream;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -41,7 +43,11 @@ public class MainController {
 		try {
 			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/all");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<AllData> allDataList = mapper.readValue(COUNTRIES_URL, new TypeReference<List<AllData>>(){});
+			
+			URLConnection urlc = COUNTRIES_URL.openConnection();
+			InputStream inputFile = urlc.getInputStream();
+			
+			List<AllData> allDataList = mapper.readValue(inputFile, new TypeReference<List<AllData>>(){});
 			model.addAttribute("allData", allDataList);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -69,10 +69,10 @@
 
 <c:forEach items="${states}" var="item">
     <div class="card text-white bg-dark border-light mb-3" id="card" style="margin: 10px; max-width: 25rem; display:inline-block; width: 370px;">
-  <div class="card-header">Updated : ${item.updated}</div>
+  <div class="card-header">${item.state}</div>
   <div class="card-body">
     <h4 class="card-title"> <a href="state/${item.state}" target="_blank" class="text-warning"> <strong>${item.state}</strong></a></h4>
-    <p class="card-text">Today cases: ${item.todayCases} <br> Today deaths: ${item.todayDeaths}</p>
+    <p class="card-text">Today cases: ${item.todayCases} <br> Today deaths: ${item.todayDeaths} </p>
   </div>
 </div>
 </c:forEach>

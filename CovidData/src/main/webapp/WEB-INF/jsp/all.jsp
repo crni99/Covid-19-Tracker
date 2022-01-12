@@ -49,7 +49,7 @@
 <div style="width: 100%; max-width: 960px; margin: 0 auto; margin-top: 25px;">
 
 <c:forEach items="${allData}" var="item">
-    <div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px;">
+    <div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px; height: 320px;">
   <div class="card-header" style="text-align: center;">TODAY</div>
   <div class="card-body">
     <p class="card-text">
@@ -64,12 +64,21 @@
 				    <tr>
 				      <th scope="col">Recovered</th><th scope="col">${item.todayRecovered}</th>
 				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
 			</thead>
 		</table>
   </div>
 </div>
 
-<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px;">
+<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px; height: 320px;">
   <div class="card-header" style="text-align: center;">TOTAL</div>
   <div class="card-body">
     <p class="card-text">
@@ -98,7 +107,7 @@
   </div>
 </div>
 
-<div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px;">
+<div class="card text-white bg-dark border-light mb-3" id="card" style="display:inline-block; width: 460px; height: 320px;">
   <div class="card-header" style="text-align: center;">PER ONE MILLION</div>
   <div class="card-body">
     <p class="card-text">
@@ -127,7 +136,7 @@
   </div>
 </div>
 
-<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px;">
+<div class="card text-white bg-dark border-light mb-3" id="card" style="margin-left: 30px; display:inline-block; width: 460px; height: 320px;">
   <div class="card-header" style="text-align: center;">INFO</div>
   <div class="card-body">
     <p class="card-text">
@@ -138,6 +147,18 @@
 				    </tr>
 				    <tr>
 				      <th scope="col">Affected Countries</th><th scope="col">${item.affectedCountries}</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
+				    </tr>
+				    <tr>
+				      <th scope="col">&nbsp;</th><th scope="col">&nbsp;</th>
 				    </tr>
 			</thead>
 		</table>
