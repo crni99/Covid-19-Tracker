@@ -1,5 +1,12 @@
 # Covid-19 Tracker
 
+## The API
+All data are collected from this API:
+```bash
+https://disease.sh/docs/
+```
+API update all numbers daily and numbers are valid !
+
 *All*
 ![All](https://user-images.githubusercontent.com/89692428/149537170-ae3e5ef3-153d-43a8-adf6-40edb8bb015d.png)
 
