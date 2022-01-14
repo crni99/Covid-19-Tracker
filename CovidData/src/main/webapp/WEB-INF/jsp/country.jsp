@@ -61,7 +61,7 @@
   <div class="card-header" style="text-align: center;">${item.country}</div>
   <div class="card-body">
     <p class="card-text">
-	  <table class="table align-middle">
+	  <table class="table align-middle" id="table">
 	    <thead>
 			<tr>
 			  <th scope="col"><img SRC="${entry.flag}" width="200" height="117"><th scope="col">

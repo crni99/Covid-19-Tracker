@@ -1,5 +1,6 @@
 package com.covid.CovidData.model;
 
+
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
