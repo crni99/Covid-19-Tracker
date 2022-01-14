@@ -7,6 +7,7 @@ https://disease.sh/docs/
 ```
 API update all numbers daily and numbers are valid !
 
+## Screenshots
 *All*
 ![All](https://user-images.githubusercontent.com/89692428/149537170-ae3e5ef3-153d-43a8-adf6-40edb8bb015d.png)
 
