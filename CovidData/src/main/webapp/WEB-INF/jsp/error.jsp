@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -17,11 +18,19 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<div style="height: 10em; display: flex; align-items: center; justify-content: center; margin-top: 200px;">
-		<h1>Something went wrong!</h1>
-		<form action="http://localhost:8080/all" style="margin-left: 35px;">
-			<button type="submit" class="btn btn-primary">HOME</button>
-		</form>
+	<div style="height: 10em; display: flex; align-items: center; justify-content: center; margin-top: 150px;">
+		<div class="card text-white bg-dark border-light mb-3" id="card"
+			style="margin: 10px; max-width: 35rem; display: inline-block; width: 500px;">
+			<div class="card-header">Page Not Found!</div>
+			<div class="card-body">
+				<h4 class="card-title"></h4>
+				<p class="card-text">Looks like you've followed a broken link or
+					entered a URL that doesn't exist on this site.</p>
+				<form action="http://localhost:8080/all" style="margin-left: 308px;">
+					<button type="submit" class="btn btn-primary">Back to home page</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

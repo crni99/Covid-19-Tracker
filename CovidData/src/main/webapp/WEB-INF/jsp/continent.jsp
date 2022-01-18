@@ -57,7 +57,7 @@ tr th:first-child {
 		</div>
 	</nav>
 
-	<div style="width: 100%; max-width: 960px; margin: 0 auto;">
+	<div style="width: 100%; max-width: 960px; margin: 0 auto; margin-top: 25px;">
 
 		<c:forEach items="${continent}" var="item">
 			<div class="card text-white bg-dark border-light mb-3" id="card"

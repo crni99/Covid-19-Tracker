@@ -98,7 +98,7 @@ tr th:first-child {
 			</div>
 
 			<div class="card text-white bg-dark border-light mb-3" id="card"
-				style="margin-left: 30px; display: inline-block; width: 460px; height: 320px;">
+				style="display: inline-block; width: 460px; height: 320px;">
 				<div class="card-header" style="text-align: center;">TOTAL</div>
 				<div class="card-body">
 					<p class="card-text">
@@ -171,7 +171,7 @@ tr th:first-child {
 			</div>
 
 			<div class="card text-white bg-dark border-light mb-3" id="card"
-				style="margin-left: 30px; display: inline-block; width: 460px; height: 320px;">
+				style="display: inline-block; width: 460px; height: 320px;">
 				<div class="card-header" style="text-align: center;">INFO</div>
 				<div class="card-body">
 					<p class="card-text">
