@@ -7,16 +7,9 @@
 <head>
 <meta charset="UTF-8" />
 <title>States</title>
-<link href="https://bootswatch.com/5/superhero/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/search.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,31 +41,14 @@
 					<li class="nav-item"><a class="nav-link active" href="http://localhost:8080/states">States</a>
 					</li>
 					<li class="nav-item"><input type="text" id="Search" onkeyup="myFunction()" class="form-control"
-						placeholder="Search all fields" style="margin-left: 10px; margin-top: 2px;"> 
-					<script>
-						function myFunction() {
-	  					  var input = document.getElementById("Search");
-						  var filter = input.value.toLowerCase();
-						  var nodes = document.getElementsByClassName('card');
-						
-						  for (i = 0; i < nodes.length; i++) {
-						    if (nodes[i].innerText.toLowerCase().includes(filter)) {
-						      nodes[i].style.display = "inline-block";
-						    } else {
-						      nodes[i].style.display = "none";
-						    }
-						  }
-						}
-					</script>
+						placeholder="Search all fields" style="margin-left: 10px; margin-top: 2px;">
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-
 	<br>
 	<div style="width: 100%; max-width: 1200px; margin: 0 auto;">
-
 		<c:forEach items="${states}" var="item">
 			<div class="card text-white bg-dark border-light mb-3" id="card"
 				style="margin: 10px; max-width: 25rem; display: inline-block; width: 370px;">
@@ -90,7 +66,6 @@
 				</div>
 			</div>
 		</c:forEach>
-
 	</div>
 </body>
 </html>

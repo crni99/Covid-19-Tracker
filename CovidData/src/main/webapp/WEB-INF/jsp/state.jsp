@@ -7,16 +7,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>State</title>
-<link href="https://bootswatch.com/5/superhero/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <style>
 tr th:first-child {
 	width: 65%;
@@ -56,10 +48,8 @@ tr th:first-child {
 			</div>
 		</div>
 	</nav>
-
 	<div
 		style="width: 100%; max-width: 960px; margin: 0 auto; margin-top: 25px;">
-
 		<c:forEach items="${state}" var="item">
 			<div class="card text-white bg-dark border-light mb-3" id="card"
 				style="margin: 10px; max-width: 60rem; width: 960px;">
@@ -120,9 +110,7 @@ tr th:first-child {
 					</table>
 				</div>
 			</div>
-
 		</c:forEach>
 	</div>
-
 </body>
 </html>

@@ -7,16 +7,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Country</title>
-<link href="https://bootswatch.com/5/superhero/bootstrap.min.css"
-	rel="stylesheet" type="text/css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-	integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-	integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <style>
 tr th:first-child {
 	width: 65%;
@@ -24,7 +16,6 @@ tr th:first-child {
 </style>
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Covid-19 World Data Tracker</a>
@@ -57,10 +48,8 @@ tr th:first-child {
 			</div>
 		</div>
 	</nav>
-
 	<div
 		style="width: 100%; max-width: 960px; margin: 0 auto; margin-top: 25px;">
-
 		<c:forEach items="${country}" var="item">
 			<c:forEach items="${item.countryInfo}" var="entry">
 
@@ -175,6 +164,5 @@ tr th:first-child {
 			</c:forEach>
 		</c:forEach>
 	</div>
-
 </body>
 </html>
