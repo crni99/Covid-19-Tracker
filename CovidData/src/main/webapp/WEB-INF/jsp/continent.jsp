@@ -15,10 +15,15 @@ tr th:first-child {
 }
 </style>
 </head>
-<body>
+<body style="background-image: url('${pageContext.request.contextPath}/images/covid.png');
+	background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Covid-19 World Data Tracker</a>
+			<a class="navbar-brand" href="#">
+			<img src="${pageContext.request.contextPath}/images/covid.png" width="30" height="30" 
+				class="d-inline-block align-top" alt="">
+				&nbsp;&nbsp;Covid-19 World Data Tracker
+			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarColor02"
 				aria-controls="navbarColor02" aria-expanded="false"
@@ -124,8 +129,9 @@ tr th:first-child {
 							<tr>
 								<c:forEach items="${item.continentInfo}" var="entry">
 									<th scope="col">Continent Info</th>
-									<th scope="col">Latitude: ${entry.latitude} <br>
-										Longitude: ${entry.longitude}
+									<th scope="col">Latitude: ${entry.latitude} 
+													<br>
+													Longitude: ${entry.longitude}
 									</th>
 								</c:forEach>
 							</tr>

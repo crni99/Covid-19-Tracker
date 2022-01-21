@@ -10,8 +10,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<div style="height: 10em; display: flex; align-items: center; justify-content: center; margin-top: 150px;">
+<body style="background-image: url('${pageContext.request.contextPath}/images/covid.png');
+	background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+	<div style="height: 10em; display: flex; align-items: center; justify-content: center; margin-top: 200px;">
 		<div class="card text-white bg-dark border-light mb-3" id="card"
 			style="margin: 10px; max-width: 35rem; display: inline-block; width: 500px;">
 			<div class="card-header">Page Not Found!</div>
