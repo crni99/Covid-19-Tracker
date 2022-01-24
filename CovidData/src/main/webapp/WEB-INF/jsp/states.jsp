@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>States</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/covid.png">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/search.js"></script>

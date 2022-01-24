@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Continent</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/covid.png">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <style>
@@ -58,6 +59,13 @@ tr th:first-child {
 			<div class="card text-white bg-dark border-light mb-3" id="card"
 				style="margin: 10px; max-width: 60rem; width: 960px;">
 				<div class="card-header" style="text-align: center;">${item.continent}</div>
+				<script> 
+				function name() {
+					var nameOfContinent = "${item.continent}";
+					document.title = nameOfContinent;
+				}
+				window.onload = name;
+				</script>
 				<div class="card-body">
 					<p class="card-text">
 					<table class="table">
