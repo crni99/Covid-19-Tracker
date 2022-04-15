@@ -1,4 +1,4 @@
-package com.covid.CovidData;
+package com.crni99.CovidData;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

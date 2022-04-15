@@ -1,4 +1,4 @@
-package com.covid.CovidData.model;
+package com.crni99.CovidData.model;
 
 public class States {
 

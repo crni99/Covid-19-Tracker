@@ -1,4 +1,4 @@
-package com.covid.CovidData.controller;
+package com.crni99.CovidData.controller;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -11,11 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.covid.CovidData.model.AllData;
-import com.covid.CovidData.model.Continent;
-import com.covid.CovidData.model.SpecificCountry;
-import com.covid.CovidData.model.SpecificState;
-import com.covid.CovidData.model.States;
+import com.crni99.CovidData.exception.NoDataException;
+import com.crni99.CovidData.model.AllData;
+import com.crni99.CovidData.model.Continent;
+import com.crni99.CovidData.model.SpecificCountry;
+import com.crni99.CovidData.model.SpecificState;
+import com.crni99.CovidData.model.States;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,9 +24,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class MainController implements ErrorController {
 
-	//		https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_all
-	//		https://disease.sh/docs/#/
-	
+	// https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_all
+	// https://disease.sh/docs/#/
+
 	private static ObjectMapper mapper = new ObjectMapper();
 
 	private static final String ALLDATA_PAGE = "all";
@@ -45,7 +46,11 @@ public class MainController implements ErrorController {
 			URLConnection urlc = COUNTRIES_URL.openConnection();
 			InputStream inputFile = urlc.getInputStream();
 
-			List<AllData> allDataList = mapper.readValue(inputFile, new TypeReference<List<AllData>>() {});
+			List<AllData> allDataList = mapper.readValue(inputFile, new TypeReference<List<AllData>>() {
+			});
+			if (allDataList.isEmpty()) {
+				throw new NoDataException("World data does not exist.");
+			}
 			model.addAttribute("allData", allDataList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,7 +63,11 @@ public class MainController implements ErrorController {
 		try {
 			URL STATES_URL = new URL("https://disease.sh/v3/covid-19/states");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<States> statesList = mapper.readValue(STATES_URL, new TypeReference<List<States>>() {});
+			List<States> statesList = mapper.readValue(STATES_URL, new TypeReference<List<States>>() {
+			});
+			if (statesList.isEmpty()) {
+				throw new NoDataException("States does not exists.");
+			}
 			model.addAttribute("states", statesList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +80,11 @@ public class MainController implements ErrorController {
 		try {
 			URL STATE_URL = new URL("https://disease.sh/v3/covid-19/states/" + state);
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<SpecificState> stateList = mapper.readValue(STATE_URL, new TypeReference<List<SpecificState>>() {});
+			List<SpecificState> stateList = mapper.readValue(STATE_URL, new TypeReference<List<SpecificState>>() {
+			});
+			if (stateList.isEmpty()) {
+				throw new NoDataException("Data for " + state + " does not exist.");
+			}
 			model.addAttribute("state", stateList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +97,12 @@ public class MainController implements ErrorController {
 		try {
 			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/countries");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<SpecificCountry> countryList = mapper.readValue(COUNTRIES_URL, new TypeReference<List<SpecificCountry>>() {});
+			List<SpecificCountry> countryList = mapper.readValue(COUNTRIES_URL,
+					new TypeReference<List<SpecificCountry>>() {
+					});
+			if (countryList.isEmpty()) {
+				throw new NoDataException("Countries does not exists.");
+			}
 			model.addAttribute("country", countryList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +115,12 @@ public class MainController implements ErrorController {
 		try {
 			URL COUNTRY_URL = new URL("https://disease.sh/v3/covid-19/countries/" + country + "?strict=true");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<SpecificCountry> countryList = mapper.readValue(COUNTRY_URL, new TypeReference<List<SpecificCountry>>() {});
+			List<SpecificCountry> countryList = mapper.readValue(COUNTRY_URL,
+					new TypeReference<List<SpecificCountry>>() {
+					});
+			if (countryList.isEmpty()) {
+				throw new NoDataException("Data for " + country + " does not exist.");
+			}
 			model.addAttribute("country", countryList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,7 +133,11 @@ public class MainController implements ErrorController {
 		try {
 			URL CONTINENT_URL = new URL("https://disease.sh/v3/covid-19/continents/" + continent + "?strict=true");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-			List<Continent> continentList = mapper.readValue(CONTINENT_URL, new TypeReference<List<Continent>>() {});
+			List<Continent> continentList = mapper.readValue(CONTINENT_URL, new TypeReference<List<Continent>>() {
+			});
+			if (continentList.isEmpty()) {
+				throw new NoDataException("Data for " + continent + " does not exist.");
+			}
 			model.addAttribute("continent", continentList);
 		} catch (Exception e) {
 			e.printStackTrace();

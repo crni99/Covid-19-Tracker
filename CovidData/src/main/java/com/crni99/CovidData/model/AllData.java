@@ -1,12 +1,6 @@
-package com.covid.CovidData.model;
+package com.crni99.CovidData.model;
 
-
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
-public class Continent {
+public class AllData {
 
 	private long updated;
 	private long cases;
@@ -22,12 +16,13 @@ public class Continent {
 	private long tests;
 	private float testsPerOneMillion;
 	private long population;
-	private String continent;
+	private float oneCasePerPeople;
+	private float oneDeathPerPeople;
+	private float oneTestPerPeople;
 	private float activePerOneMillion;
 	private float recoveredPerOneMillion;
 	private float criticalPerOneMillion;
-	private List<ContinentInfo> continentInfo;
-	private List<String> countries;
+	private int affectedCountries;
 	
 	public long getUpdated() {
 		return updated;
@@ -113,11 +108,23 @@ public class Continent {
 	public void setPopulation(long population) {
 		this.population = population;
 	}
-	public String getContinent() {
-		return continent;
+	public float getOneCasePerPeople() {
+		return oneCasePerPeople;
 	}
-	public void setContinent(String continent) {
-		this.continent = continent;
+	public void setOneCasePerPeople(float oneCasePerPeople) {
+		this.oneCasePerPeople = oneCasePerPeople;
+	}
+	public float getOneDeathPerPeople() {
+		return oneDeathPerPeople;
+	}
+	public void setOneDeathPerPeople(float oneDeathPerPeople) {
+		this.oneDeathPerPeople = oneDeathPerPeople;
+	}
+	public float getOneTestPerPeople() {
+		return oneTestPerPeople;
+	}
+	public void setOneTestPerPeople(float oneTestPerPeople) {
+		this.oneTestPerPeople = oneTestPerPeople;
 	}
 	public float getActivePerOneMillion() {
 		return activePerOneMillion;
@@ -137,29 +144,11 @@ public class Continent {
 	public void setCriticalPerOneMillion(float criticalPerOneMillion) {
 		this.criticalPerOneMillion = criticalPerOneMillion;
 	}
-	public List<ContinentInfo> getContinentInfo() {
-		return continentInfo;
+	public int getAffectedCountries() {
+		return affectedCountries;
 	}
-	public void setContinentInfo(List<ContinentInfo> continentInfo) {
-		this.continentInfo = continentInfo;
+	public void setAffectedCountries(int affectedCountries) {
+		this.affectedCountries = affectedCountries;
 	}
-	public List<String> getCountries() {
-		return countries;
-	}
-	public void setCountries(List<String> countries) {
-		this.countries = countries;
-	}
-	
-	@Override
-	public String toString() {
-		return "Continent [updated=" + updated + ", cases=" + cases + ", todayCases=" + todayCases + ", deaths="
-				+ deaths + ", todayDeaths=" + todayDeaths + ", recovered=" + recovered + ", todayRecovered="
-				+ todayRecovered + ", active=" + active + ", critical=" + critical + ", casesPerOneMillion="
-				+ casesPerOneMillion + ", deathsPerOneMillion=" + deathsPerOneMillion + ", tests=" + tests
-				+ ", testsPerOneMillion=" + testsPerOneMillion + ", population=" + population + ", continent="
-				+ continent + ", activePerOneMillion=" + activePerOneMillion + ", recoveredPerOneMillion="
-				+ recoveredPerOneMillion + ", criticalPerOneMillion=" + criticalPerOneMillion + ", continentInfo="
-				+ continentInfo + ", countries=" + countries + "]";
-	}
-	
+
 }
