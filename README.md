@@ -5,7 +5,7 @@ All data are collected from this API:
 ```bash
 https://disease.sh/docs/
 ```
-API update all numbers daily and numbers are valid !
+**When the program is started, then you need to open a web browser and type URL for localhost and specified folder. Then the website is opened and you can see real-time covid data for the world, for a specific continent or specific country.**
 
 ## Screenshots
 *All*
