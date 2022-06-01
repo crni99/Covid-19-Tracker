@@ -24,10 +24,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class MainController implements ErrorController {
 
-	// https://disease.sh/docs/#/COVID-19%3A%20Worldometers/get_v3_covid_19_all
-	// https://disease.sh/docs/#/
-
 	private static ObjectMapper mapper = new ObjectMapper();
+
+	private static final String ALL = "https://disease.sh/v3/covid-19/all";
+	private static final String STATES = "https://disease.sh/v3/covid-19/states";
+	private static final String STATE = "https://disease.sh/v3/covid-19/states/";
+	private static final String COUNTRIES = "https://disease.sh/v3/covid-19/countries";
+	private static final String COUNTRY = "https://disease.sh/v3/covid-19/countries/";
+	private static final String CONTINENT = "https://disease.sh/v3/covid-19/continents/";
 
 	private static final String ALLDATA_PAGE = "all";
 	private static final String CONTINENT_PAGE = "continent";
@@ -40,7 +44,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/all")
 	public String all(final Model model) {
 		try {
-			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/all");
+			URL COUNTRIES_URL = new URL(ALL);
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 
 			URLConnection urlc = COUNTRIES_URL.openConnection();
@@ -61,7 +65,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/states")
 	public String states(final Model model) {
 		try {
-			URL STATES_URL = new URL("https://disease.sh/v3/covid-19/states");
+			URL STATES_URL = new URL(STATES);
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<States> statesList = mapper.readValue(STATES_URL, new TypeReference<List<States>>() {
 			});
@@ -78,7 +82,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/state/{state}")
 	public String specificState(@PathVariable String state, Model model) {
 		try {
-			URL STATE_URL = new URL("https://disease.sh/v3/covid-19/states/" + state);
+			URL STATE_URL = new URL(STATE + state);
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<SpecificState> stateList = mapper.readValue(STATE_URL, new TypeReference<List<SpecificState>>() {
 			});
@@ -95,7 +99,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/countries")
 	public String countries(final Model model) {
 		try {
-			URL COUNTRIES_URL = new URL("https://disease.sh/v3/covid-19/countries");
+			URL COUNTRIES_URL = new URL(COUNTRIES);
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<SpecificCountry> countryList = mapper.readValue(COUNTRIES_URL,
 					new TypeReference<List<SpecificCountry>>() {
@@ -113,7 +117,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/country/{country}")
 	public String specificCountry(@PathVariable String country, final Model model) {
 		try {
-			URL COUNTRY_URL = new URL("https://disease.sh/v3/covid-19/countries/" + country + "?strict=true");
+			URL COUNTRY_URL = new URL(COUNTRY + country + "?strict=true");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<SpecificCountry> countryList = mapper.readValue(COUNTRY_URL,
 					new TypeReference<List<SpecificCountry>>() {
@@ -131,7 +135,7 @@ public class MainController implements ErrorController {
 	@GetMapping("/continent/{continent}")
 	public String specificContinent(@PathVariable String continent, final Model model) {
 		try {
-			URL CONTINENT_URL = new URL("https://disease.sh/v3/covid-19/continents/" + continent + "?strict=true");
+			URL CONTINENT_URL = new URL(CONTINENT + continent + "?strict=true");
 			mapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 			List<Continent> continentList = mapper.readValue(CONTINENT_URL, new TypeReference<List<Continent>>() {
 			});
